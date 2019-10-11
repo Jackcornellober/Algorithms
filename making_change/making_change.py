@@ -3,7 +3,27 @@
 import sys
 
 def making_change(amount, denominations):
-  pass 
+  total = 0
+
+  if len(denominations) == 1:
+    return 1
+  else:
+    if (amount - (denominations[-1])) >= 0:
+      q = amount//denominations
+      b = q*making_change(amount - denominations[-1]*q,denominations)
+      popped = denominations
+      popped.pop()
+      return b + making_change(amount-denominations[-1]*q,popped)
+    else:
+      popped = denominations
+      popped.pop()
+      return making_change(amount,popped)
+
+
+
+  for i in denominations:
+    if i >= amount:
+      total = total + making_change
 
 
 if __name__ == "__main__":

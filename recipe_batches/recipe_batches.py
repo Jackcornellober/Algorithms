@@ -3,7 +3,19 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  finished = 0
+  total = 0
+  while finished == 0:
+    for i in recipe.keys():
+      if i in ingredients.keys():
+        ingredients[i] = ingredients[i] - recipe[i]
+        if ingredients[i] < 0:
+          finished = 1
+      else:
+        return 0
+    if finished == 0:
+      total = total + 1
+  return total
 
 
 if __name__ == '__main__':
